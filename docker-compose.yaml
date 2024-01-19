@@ -7,19 +7,27 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_logs:/opt/sonarqube/logs
+  
+  jenkins:  
+    image: jenkins/jenkins:2.426.2
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+      - "2376:2376"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - jenkins-docker-certs:/certs/client
     #deploy:
     #  resources:
     #    limits:
     #      cpus: '1'
-    #      memory: 512M 
-  
-  #jenkins:
-  #  image: 
-  #  depends_on:
-  #    - sonar
-
+    #      memory: 512M
+    depends_on:
+      - sonar
 
 volumes:
   sonarqube_data:
   sonarqube_extensions:
   sonarqube_logs:
+  jenkins_home:
+  jenkins-docker-certs:
