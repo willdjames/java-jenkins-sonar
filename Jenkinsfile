@@ -22,8 +22,10 @@ pipeline {
 
         stage('Sonar Analise') {
             steps {
-                sh "/var/jenkins_home/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -Dsonar.host.url=http://sonar:9000 -Dsonar.token=squ_036dcc7c1d1b2e0a2ae6d3cd888c9c49ecdd6716"
+                withSonarQubeEnv('SOnarqube') {
                 //  sh "/var/jenkins_home/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -h"
+                sh "/var/jenkins_home/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -Dsonar.host.url=http://sonar:9000 -Dsonar.token=squ_036dcc7c1d1b2e0a2ae6d3cd888c9c49ecdd6716"
+                }
             }
             
         }
