@@ -80,4 +80,4 @@ steps {
 Notamos que a configuração responsavel, que nos habilita a adotar a estrategia de alterar o comportamento
 padrão de abortar a pipeline após o retorno de falha do Quality Gate, é 
 ``` waitForQualityGate abortPipeline: false|true ```, onde _true_ é o valor padrão. Mas para isso 
-ser possivel, devemos involcar o _sonar-scanner_ dentro do bloco ``` withSonarQubeEnv()  ```.
+ser possivel, devemos involcar o _sonar-scanner_ dentro do bloco ``` withSonarQubeEnv() ```.
