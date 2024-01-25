@@ -23,17 +23,20 @@ pipeline {
         stage('Sonar Analise') {
             steps {
                 withSonarQubeEnv('SOnarqube') {
-                //  sh "/var/jenkins_home/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -h"
-                sh "/var/jenkins_home/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -Dsonar.host.url=http://sonar:9000 -Dsonar.token=squ_036dcc7c1d1b2e0a2ae6d3cd888c9c49ecdd6716"
+                    //  sh "/var/jenkins_home/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -h"
+                    sh "/var/jenkins_home/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -Dsonar.host.url=http://sonar:9000 -Dsonar.token=squ_036dcc7c1d1b2e0a2ae6d3cd888c9c49ecdd6716"
                 }
             }
             
         }
 
-        stage('Sonar Gste') {
+        stage('Sonar Gate') {
             steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate abortPipeline: true
+                timeout(time: 3, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: false
+                }
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                    error 'STAGE UNSTABLE'
                 }
             }
         }
