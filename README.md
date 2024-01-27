@@ -1,5 +1,6 @@
-# CI e estratégias de Quality Gates bloqueantes e não-bloqueantes 
+![Falha do quality gate ignorado](misc/image.png)
 
+# CI e a configuração de Quality Gates bloqueantes e não-bloqueantes 
 
 Uma POC para apresentar a possibilidade de construir uma pipeline de CI com estrategia de interromper
 ou prosseguir, mesmo quando o retorno de falha do quality gate do Sonar.  
@@ -15,6 +16,7 @@ Sem nenhuma configuração extra, apenas utlizando o quality gate _Sonar Way_.
 ## Sobre o Jenkins
 
 Apenas instalado o executavel do _sonar-scanner_ no servidor do Jenkins.  
+
 
 ### Dos estagios da pipeline da POC
 
@@ -73,6 +75,10 @@ steps {
     }
 }
 ```
+
+No log:  
+
+![Log do quality gate](misc/log.png)
 
 
 ## Conclusão
