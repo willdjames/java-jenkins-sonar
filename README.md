@@ -5,7 +5,7 @@
 Uma POC para apresentar a possibilidade de construir uma pipeline de CI com estrategia de interromper
 ou prosseguir, mesmo quando o retorno de falha do quality gate do Sonar.  
 
-No docker-compose.yaml tem configurado ambos os serviços da instancia do Sonar e Jenkins.
+No [docker-compose](./docker-compose.yaml) tem configurado ambos os serviços da instancia do Sonar e Jenkins.
 
 
 ## Sobre o Sonar
